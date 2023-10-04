@@ -2,8 +2,8 @@ const { PrismaClient } = require("@prisma/client");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require('dotenv').config();
-require('dotenv').config();
 JWT_SECRET = process.env.JWT_SECRET;
+
 const cookieParser = require("cookie-parser");
 
 const SALT_ROUNDS = 10;

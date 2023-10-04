@@ -110,6 +110,15 @@ export const getUserEventsAPI = async () => {
    }
 }
 
+export const getEventsByUserAPI = async() => {
+   try{
+      
+   }
+   catch(error){
+      console.log(error.message)
+   }
+}
+
 export const registerForEvent = async (evtId) => {
    await axios.post("https://127.0.0.1:5000/userEventRegistration", { "eventId": evtId }, {
       withCredentials: true
