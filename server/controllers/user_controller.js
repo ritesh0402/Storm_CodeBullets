@@ -54,14 +54,8 @@ const userLogIn = async (req, res) => {
     if (!passCompare) {
       return res.status(401).json({ error: "Please enter correct Credential" });
     }
-
-    const data = {
-      user: {
-        id: user.id,
-      },
-    };
-
-    const authtoken = jwt.sign(data, JWT_SECRET);
+    
+    const authtoken = jwt.sign({userId: user.id}, JWT_SECRET);
 
     return res.cookie("access_token", authtoken, {
         secure: true,
@@ -78,7 +72,7 @@ const userLogIn = async (req, res) => {
 
 async function userEventRegistration(req, res) {
   const { eventId } = req.body;
-  
+
 }
 
 module.exports = { userLogIn, create_user};
