@@ -4,17 +4,14 @@ const { fetchuser } = require("../middleware/fetchuser");
 const prisma = new PrismaClient();
 
 async function createEvent(req, res) {
-  const { title, desc, venue, startTime, endTime, imageUrl, organizer_id } = req.body;
-
+  const { title, desc, venue,startTime,endTime,imageUrl, organizer_id } = req.body;
   await prisma.event
     .create({
       data: {
         title: title,
         desc: desc,
         venue: venue,
-        startTime: parseInt(startTime),
-        endTime: parseInt(endTime),
-        imageUrl: imageUrl,
+        time: parseInt(time),
         organizer_id: organizer_id,
       },
     })
