@@ -27,9 +27,10 @@ async function createEvent(req, res) {
     });
 }
 
-async function getEvents(req, res) {
-
+async function getAllEvents(req, res) {
+  const events = await prisma.event.findMany();
+  res.status(200).send(events);
 }
 
 
-module.exports = { createEvent };
+module.exports = { createEvent,getAllEvents };
