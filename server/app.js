@@ -14,7 +14,7 @@ const httpsOptions = {
 }
 
 app.use(cors({
-    origin: ['https://127.0.0.1:5173', 'https://localhost:5173'],
+    origin: ['https://127.0.0.1:3000', 'https://localhost:3000'],
     credentials: true
 }));
 

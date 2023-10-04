@@ -9,13 +9,15 @@ function Home() {
    async function fetchEvents() {
       await axios.get("https://127.0.0.1:5000/getAllEvents")
          .then((res) => {
-            res.forEach((x) => {
+            res.data.forEach((x) => {
                if (x.time < Date.now()) {
                   pastEvents.push(x);
                } else {
                   upcommingEvents.push(x);
                }
             });
+            // console.log(pastEvents);
+            // console.log(upcommingEvents);
 
          })
          .catch((err) => {
@@ -27,8 +29,8 @@ function Home() {
    const events = asyncWrapper(fetchEvents());
    return (
       <div>
-         <DisplayEvents events={pastEvents} titlt={"Past Events"}></DisplayEvents>
-         <DisplayEvents events={upcommingEvents} titlt={"Upcomming Events"}></DisplayEvents>
+         <DisplayEvents events={pastEvents} title={"Past Events"}></DisplayEvents>
+         <DisplayEvents events={upcommingEvents} title={"Upcomming Events"}></DisplayEvents>
       </div>
    )
 }

@@ -3,13 +3,14 @@ import React from 'react'
 
 
 function DisplayEvents(props) {
+   console.log(props.events)
    return (
       <div>
          <h2>{props.title}</h2>
          <ul>
-            {props.events.forEach((event) => {
+            {props.events.map((event) => (
                <EventCard event={event}></EventCard>
-            })}
+            ))}
          </ul>
       </div>
    )
