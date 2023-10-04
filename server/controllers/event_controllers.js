@@ -4,7 +4,8 @@ const { fetchuser } = require("../middleware/fetchuser");
 const prisma = new PrismaClient();
 
 async function createEvent(req, res) {
-  const { title, desc, venue,startTime,endTime,imageUrl, organizer_id } = req.body;
+  const { title, desc, venue, startTime, endTime, imageUrl, organizer_id } =
+    req.body;
   await prisma.event
     .create({
       data: {
@@ -31,11 +32,13 @@ async function getAllEvents(req, res) {
   res.status(200).send(events);
 }
 
-async function getEventsByUser(req, res){
+async function getEventsByUser(req, res) {
   const { id } = req.user.id;
   const events = await prisma.user.findMany({
-    where:{ id:id},
-    select:{events:true}
+    where: { id: id },
+    include: {
+      events: true
+    }
   });
   res.status(200).send(events);
 }
@@ -46,19 +49,19 @@ async function deleteEvent(req, res) {
 
   const event = await prisma.event.findFirst({
     where: {
-      organizer_id: req.user.id
-    }
+      organizer_id: req.user.id,
+    },
   });
 
-  if(event){
-    if(event.organizer_id == req.userId) {
+  if (event) {
+    if (event.organizer_id == req.userId) {
       await prisma.event.delete({
         where: {
-          id: event.id
-        }
+          id: event.id,
+        },
       });
       res.status(200).send("Event deleted successfully");
-    } else{
+    } else {
       res.status(403).send("Unauthorized to delete the event!");
     }
   } else {
@@ -66,5 +69,4 @@ async function deleteEvent(req, res) {
   }
 }
 
-
-module.exports = { createEvent,getAllEvents,getEventsByUser, deleteEvent };
+module.exports = { createEvent, getAllEvents, getEventsByUser, deleteEvent };

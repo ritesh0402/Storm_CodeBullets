@@ -11,23 +11,31 @@ datasource db {
 }
 
 model User {
-  id String @id @map("_id") @default(auto()) @db.ObjectId
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
   fullName String
   username String @unique
   password String
-  email String
-  phone String
-  events Event[]
+  email    String
+  phone    String
+
+  events Event[] @relation(name: "organizer_events")
+
+  attended_events    Event[]  @relation(fields: [attended_event_ids], references: [id], name: "attendees_events")
+  attended_event_ids String[] @db.ObjectId
 }
 
 model Event {
-  id String @id @map("_id") @default(auto()) @db.ObjectId
-  title String
-  desc String
-  venue String
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  desc      String
+  venue     String
   startTime Int
-  endTime Int
-  imageUrl String[]
-  organizer User @relation(fields: [organizer_id], references: [id])
+  endTime   Int
+  imageUrl  String[]
+
+  organizer    User   @relation(fields: [organizer_id], references: [id], name: "organizer_events")
   organizer_id String @db.ObjectId
+
+  attendees    User[]   @relation(fields: [attendees_id], references: [id], name: "attendees_events")
+  attendees_id String[] @db.ObjectId
 }
