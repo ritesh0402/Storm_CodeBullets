@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = "http://localhost:5000";
+const URL = "https://localhost:5000";
 
 
 export const authenticateSignup = async (data) => {
@@ -15,7 +15,9 @@ export const authenticateSignup = async (data) => {
 
 export const authenticateLogin = async (data) => {
    try {
-      return await axios.post(`${URL}/login`, data);
+      return await axios.post(`${URL}/login`, data, {
+         withCredentials: true
+      });
    }
    catch (error) {
       console.log("error while authenticating login : ", error);
@@ -66,24 +68,43 @@ export const getEventsAPI = async () => {
    // let pastEvents = [];
    // let upcommingEvents = [];
     try{
-      const res = await axios.get("https://127.0.0.1:5000/getAllEvents")
+      const res = await axios.get(`${URL}/getAllEvents`)
       console.log(res);
       return res;
-         // res.data.forEach((x) => {
-         //    if (x.time < Date.now()) {
-         //       pastEvents.push(x);
-         //    } else {
-         //       upcommingEvents.push(x);
-         //    }
-         // });
+      // res.data.forEach((x) => {
+      //    if (x.time < Date.now()) {
+      //       pastEvents.push(x);
+      //    } else {
+      //       upcommingEvents.push(x);
+      //    }
+      // });
 
          // // console.log(pastEvents);
          // // console.log(upcommingEvents);
-    }catch(err){
+    }
+    catch(err){
       console.log("An error occured");
          console.log(err);
     }
-      
+}
 
-   
+export const getUserEventsAPI = async() => {
+   try{
+
+   }
+   catch(error){
+      console.log(error.message);
+   }
+}
+
+export const registerForEvent = async (evtId) => {
+   await axios.post("https://127.0.0.1:5000/userEventRegistration", { "eventId": evtId }, {
+      withCredentials: true
+   })
+      .then((res) => {
+         console.log(res)
+      }).catch((err) => {
+         console.log("An error Occured")
+         console.log(err)
+      })
 }

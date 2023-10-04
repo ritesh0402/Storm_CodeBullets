@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { Box, Button, Dialog, TextField, Typography } from '@mui/material'
 import React, { useState, useContext } from 'react'
 import loginEvent from '../../images/loginEvent.png'
-// import { authenticateSignup, authenticateLogin } from '../../service/api';
-// import { DataContext } from '../../context/DataProvider';
+import { authenticateSignup, authenticateLogin } from '../../service/api';
+import { DataContext } from '../../context/DataProvider';
 // import Cookies from 'js-cookie'
 
 const Component = styled(Box)`
@@ -96,7 +96,7 @@ function LoginDialog({ open, setOpen }) {
    const [loginaccount, toggleAccount] = useState(accountInitialValues.login);
    const [login, setLogin] = useState(loginInitialValues)
    const [error, setError] = useState(false);
-   //    const { setAccount, setToken } = useContext(DataContext);
+   const { setAccount, setToken } = useContext(DataContext);
 
 
    const handleClose = () => {
@@ -117,42 +117,41 @@ function LoginDialog({ open, setOpen }) {
       setLogin({ ...login, [e.target.name]: e.target.value })
    }
 
-   //    const loginUser = async () => {
-   //       let response = await authenticateLogin(login);
-   //       console.log(response)
-   //       const username = login.username;
-   //       const auth_token = response.data.authtoken
-   //       if (response.status === 200) {
-   //          const userData = {
-   //             username,
-   //             auth_token
-   //          };
-   //          Cookies.set('auth_token', JSON.stringify(userData), { expires: 1 });
-   //          setAccount(username);
-   //          setToken(auth_token)
-   //          handleClose();
-   //       }
-   //       else {
-   //          setError(true);
-   //       }
-   //    }
+      const loginUser = async () => {
+         let response = await authenticateLogin(login);
+         console.log(response)
+         const username = login.username;
+         // const auth_token = response.data.authtoken
+         if (response.status === 200) {
+            // const userData = {
+            //    username,
+            //    auth_token
+            // };
+            // Cookies.set('auth_token', JSON.stringify(userData), { expires: 1 });
+            setAccount(username);
+            // setToken(auth_token)
+            handleClose();
+         }
+         else {
+            setError(true);
+         }
+      }
 
-   //    const signupUser = async () => {
-   //       let response = await authenticateSignup(signup);
-   //       if (!response) return;
-   //       const username = login.username;
-   //       const auth_token = response.data.authtoken
-   //       const userData = {
-   //          username,
-   //          auth_token
-   //       };
-   //       // const expirationTime = new Date(new Date().getTime() + 60000);
-   //       Cookies.set('auth_token', JSON.stringify(userData), { expires: 1 });
-   //       setAccount(username)
-   //       setToken(auth_token)
-   //       handleClose();
+      const signupUser = async () => {
+         let response = await authenticateSignup(signup);
+         if (!response) return;
+         const username = login.username;
+         // const auth_token = response.data.authtoken
+         // const userData = {
+         //    username,
+         //    auth_token
+         // };
+         // Cookies.set('auth_token', JSON.stringify(userData), { expires: 1 });
+         setAccount(username)
+         // setToken(auth_token)
+         handleClose();
 
-   //    }
+      }
 
    return (
       <div>
@@ -170,7 +169,7 @@ function LoginDialog({ open, setOpen }) {
                      {error && <Error>Please enter valid username and password</Error>}
                      <Typography style={{ fontSize: 12, color: '#878787' }}>By continuing, you agree to EventMania's Terms of Use and Privacy Policy.</Typography>
                      <LoginButton
-                     //  onClick={loginUser}
+                      onClick={loginUser}
                      >Login</LoginButton>
                      <Typography style={{ textAlign: 'center' }}>OR</Typography>
                      <RequestOTP>Request OTP</RequestOTP>
@@ -184,7 +183,7 @@ function LoginDialog({ open, setOpen }) {
                      <TextField variant='standard' name='password' onChange={(e) => onInputChange(e)} label='Enter Password'></TextField>
                      <TextField variant='standard' name='phone' onChange={(e) => onInputChange(e)} label='Enter Mobile Number'></TextField>
                      <LoginButton
-                     //  onClick={signupUser}
+                      onClick={signupUser}
                      >Continue</LoginButton>
                   </Wrapper>
                }

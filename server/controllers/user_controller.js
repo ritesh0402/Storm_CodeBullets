@@ -1,8 +1,9 @@
 const { PrismaClient } = require("@prisma/client");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-JWT_SECRET = process.env.JWT_SECRET;
 require('dotenv').config();
+JWT_SECRET = process.env.JWT_SECRET;
+
 const cookieParser = require("cookie-parser");
 
 const SALT_ROUNDS = 10;
@@ -54,7 +55,7 @@ const userLogIn = async (req, res) => {
     if (!passCompare) {
       return res.status(401).json({ error: "Please enter correct Credential" });
     }
-    
+
     const data = {
       user: {
         id: user.id
@@ -70,15 +71,14 @@ const userLogIn = async (req, res) => {
       .status(200)
       .send("Login Successful");
   } catch (error) {
-    res.status(500).send({"Error" : error.message});
+    res.status(500).send({ "Error": error.message });
   }
 };
 
 
 async function userEventRegistration(req, res) {
-  const { eventId } = req.body;
   const userId = req.user.id;
-
+  const { eventId } = req.body;
   await prisma.user.update({
     where: {
       id: userId
@@ -91,15 +91,19 @@ async function userEventRegistration(req, res) {
       }
     }
   })
-  .then(async () => {
-    res.status(200).send("User Subscribed Successfully!");
-    await prisma.$disconnect();
-  })
-  .catch(async (e) => {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+    .then(async () => {
+      res.status(200).send("User Subscribed Successfully!");
+      await prisma.$disconnect();
+    })
+    .catch(async (e) => {
+      console.error(e);
+      await prisma.$disconnect();
+      process.exit(1);
+    });
+  
 }
 
-module.exports = { userLogIn, create_user, userEventRegistration};
+
+
+
+module.exports = { userLogIn, create_user, userEventRegistration };
