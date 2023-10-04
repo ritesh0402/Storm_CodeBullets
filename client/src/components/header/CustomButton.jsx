@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Badge, Box, Button, Typography, styled } from '@mui/material'
 import Profile from './Profile';
-import { Link } from 'react-router-dom'
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 import LoginDialog from '../login/LoginDialog';
 
 
@@ -40,14 +40,16 @@ function CustomButton() {
 
    return (
       <Wrapper>
-         <Typography >Home</Typography>
-         <Typography >About</Typography>
-         {
-            account ? <Profile account={account} setAccount={setAccount} />
-               : <LoginButton variant='contained' onClick={openDialog}>Login</LoginButton>
-         }
-         <LoginDialog open={open} setOpen={setOpen} />
-
+         <Router>
+            <Link to="home">Home</Link>
+            <Link to="about">About</Link>
+            <Link to="dashboard">Dashboard</Link>
+            {
+               account ? <Profile account={account} setAccount={setAccount} />
+                  : <LoginButton variant='contained' onClick={openDialog}>Login</LoginButton>
+            }
+            <LoginDialog open={open} setOpen={setOpen} />
+         </Router>
       </Wrapper>
    )
 }

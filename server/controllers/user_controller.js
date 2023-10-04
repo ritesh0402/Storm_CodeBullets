@@ -2,8 +2,8 @@ const { PrismaClient } = require("@prisma/client");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require('dotenv').config();
+require('dotenv').config();
 JWT_SECRET = process.env.JWT_SECRET;
-
 const cookieParser = require("cookie-parser");
 
 const SALT_ROUNDS = 10;
@@ -64,10 +64,10 @@ const userLogIn = async (req, res) => {
     const authtoken = jwt.sign(data, JWT_SECRET);
 
     return res.cookie("auth_token", authtoken, {
-        secure: true,
-        httpOnly: true,
-        sameSite: "none",
-      })
+      secure: true,
+      httpOnly: true,
+      sameSite: "none",
+    })
       .status(200)
       .send("Login Successful");
   } catch (error) {
@@ -100,7 +100,7 @@ async function userEventRegistration(req, res) {
       await prisma.$disconnect();
       process.exit(1);
     });
-  
+
 }
 
 
