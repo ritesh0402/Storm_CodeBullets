@@ -62,7 +62,7 @@ const userLogIn = async (req, res) => {
     }
     const authtoken = jwt.sign(data, JWT_SECRET);
 
-    return res.cookie("access_token", authtoken, {
+    return res.cookie("auth_token", authtoken, {
         secure: true,
         httpOnly: true,
         sameSite: "none",
