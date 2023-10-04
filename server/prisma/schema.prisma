@@ -15,5 +15,5 @@ model User {
   username String @unique
   password String
   email String
-  phone Int
+  phone String
 }

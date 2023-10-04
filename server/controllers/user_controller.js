@@ -1,6 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+
 const cookieParser = require("cookie-parser");
 
 const SALT_ROUNDS = 10;
