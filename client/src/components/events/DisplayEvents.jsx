@@ -8,9 +8,9 @@ function DisplayEvents(props) {
       <div>
          <h2>{props.title}</h2>
          <ul>
-            {props.events.map((event) => (
-               <EventCard event={event}></EventCard>
-            ))}
+            {props.events.forEach(evt => {
+               return <li><EventCard evt={evt}></EventCard></li>
+            })}
          </ul>
       </div>
    )
