@@ -12,7 +12,7 @@ async function createEvent(req, res) {
         title: title,
         desc: desc,
         venue: venue,
-        time: time,
+        time: parseInt(time),
         organizer_id: organizer_id,
       },
     })

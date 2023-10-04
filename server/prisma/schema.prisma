@@ -24,7 +24,7 @@ model Event {
   title String
   desc String
   venue String
-  time DateTime @db.Timestamp
+  time Int
   organizer User @relation(fields: [organizer_id], references: [id])
   organizer_id String @db.ObjectId
 }
