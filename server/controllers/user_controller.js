@@ -76,4 +76,9 @@ const userLogIn = async (req, res) => {
 };
 
 
+async function userEventRegistration(req, res) {
+  const { eventId } = req.body;
+  
+}
+
 module.exports = { userLogIn, create_user};
