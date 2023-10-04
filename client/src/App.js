@@ -3,6 +3,7 @@ import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
 import Home from './components/home/Home';
 import About from './components/About';
+import EventCard from './components/events/EventCard';
 import Dashboard from './components/dashboard/Dashboard';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
@@ -12,6 +13,7 @@ function App() {
     <div className="App">
       {/* <h1>Hello</h1> */}
       <Header></Header>
+      {/* <EventCard></EventCard> */}
       <Router>
         <Routes>
 

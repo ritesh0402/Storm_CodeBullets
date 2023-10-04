@@ -1,11 +1,13 @@
-import MyEvents from "./MyEvents";
-import RegisteredEvents from "./RegisteredEvents";
+import DisplayEvents from "../events/DisplayEvents"
 import Stats from "./Stats";
 import React from 'react'
 
 function Dashboard() {
    return (
-      <div>Dashboard</div>
+      <div>
+         <Dashboard events={[]} title={"My Events"}></Dashboard>
+         <Dashboard events={[]} title={"Registered Events"}></Dashboard>
+      </div>
    )
 }
 
