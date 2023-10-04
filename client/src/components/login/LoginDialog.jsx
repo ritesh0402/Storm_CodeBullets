@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Box, Button, Dialog, TextField, Typography } from '@mui/material'
 import React, { useState, useContext } from 'react'
-import loginEvent from '../../images/loginEvent.jpeg'
+import loginEvent from '../../images/loginEvent.png'
 // import { authenticateSignup, authenticateLogin } from '../../service/api';
 // import { DataContext } from '../../context/DataProvider';
 // import Cookies from 'js-cookie'
@@ -10,7 +10,7 @@ const Component = styled(Box)`
     height : 79vh;
     width : 95vh;
     display : flex;
-    background-color : #f3f4f6;
+    // background-color : #f3f4f7;
 `
 
 const Image = styled(Box)`
@@ -161,7 +161,7 @@ function LoginDialog({ open, setOpen }) {
                <Image>
                   <Typography variant='h5'>{loginaccount.heading}</Typography>
                   <Typography style={{ marginTop: 20 }}>{loginaccount.subHeading}</Typography>
-                  <img src={loginEvent} style={{ width: 220, marginTop: 35, mixBlendMode: 'multiply' }} />
+                  <img src={loginEvent} style={{ width: 300, margin: '10px 0px 0px -45px' }} />
                </Image>
                {loginaccount.view === 'login' ?
                   <Wrapper>
