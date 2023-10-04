@@ -1,13 +1,13 @@
 const { PrismaClient } = require("@prisma/client");
 const bcrypt = require("bcrypt");
-const jwt = require('jsonwebtoken')
+const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 
 const SALT_ROUNDS = 10;
 
 const prisma = new PrismaClient();
 
-export async function create_user(req, res) {
+async function create_user(req, res) {
   const { email, username, phone, password } = req.body;
   const hashed_password = await bcrypt.hash(password, SALT_ROUNDS);
 
@@ -21,7 +21,7 @@ export async function create_user(req, res) {
       },
     })
     .then(async () => {
-        res.send("User creater successfully");
+      res.status(200).send("User Created Successfully!");
       await prisma.$disconnect();
     })
     .catch(async (e) => {
@@ -32,7 +32,7 @@ export async function create_user(req, res) {
 }
 
 //User login
-export const userLogIn = async (req, res) => {
+const userLogIn = async (req, res) => {
   try {
     const { username, password } = req.body;
 
@@ -71,3 +71,6 @@ export const userLogIn = async (req, res) => {
     res.status(500).json("Error: ", error.message);
   }
 };
+
+
+module.exports = { userLogIn, create_user};
