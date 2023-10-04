@@ -3,7 +3,6 @@ import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
 import Home from './components/home/Home';
 import About from './components/About';
-import EventCard from './components/events/EventCard';
 import Dashboard from './components/dashboard/Dashboard';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
@@ -18,9 +17,9 @@ function App() {
         <Routes>
 
           <Route path="home" element={<Home />} />
-          <Route path="login" element={<Login />} />
+          {/* <Route path="login" element={<Login />} />
           <Route path="logout" element={<Logout />} />
-          <Route path="about" element={<About />} />
+          <Route path="about" element={<About />} /> */}
           <Route path="dashboard" element={<Dashboard />} />
           {/* <Route path="*" element={<NoPage />} /> */}
 

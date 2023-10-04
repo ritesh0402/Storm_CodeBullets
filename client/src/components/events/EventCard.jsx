@@ -5,19 +5,20 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import hallImage from '../../images/hall.jpg'
 
-export default function EventCard({ event }) {
-   console.log("hshshshshshshshshshshshshshsh");
+export default function EventCard(props) {
+   console.log(props);
    return (
       <Card sx={{ maxWidth: 345 }}>
          <CardMedia
             sx={{ height: 140 }}
-            image="/static/images/cards/contemplative-reptile.jpg"
+            image={hallImage}
             title="green iguana"
          />
          <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-               {event}
+               Lizard
             </Typography>
             <Typography variant="body2" color="text.secondary">
                Lizards are a widespread group of squamate reptiles, with over 6,000
@@ -25,8 +26,8 @@ export default function EventCard({ event }) {
             </Typography>
          </CardContent>
          <CardActions>
-            <Button variant="contained">Register</Button>
-            <Button variant="contained">Know More</Button>
+            <Button size="small">Share</Button>
+            <Button size="small">Learn More</Button>
          </CardActions>
       </Card>
    );
