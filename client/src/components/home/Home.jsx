@@ -9,6 +9,7 @@ function Home() {
    const {events} = useSelector(state => state.getEvents)
    useEffect(()=>{
       dispatch(getEvents())
+      console.log(events)
    }, [dispatch])
    return (
       <div>

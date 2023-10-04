@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = "http://localhost:5000";
+const URL = "https://localhost:5000";
 
 
 export const authenticateSignup = async (data) => {
@@ -66,7 +66,7 @@ export const getEventsAPI = async () => {
    // let pastEvents = [];
    // let upcommingEvents = [];
     try{
-      const res = await axios.get("https://127.0.0.1:5000/getAllEvents")
+      const res = await axios.get(`${URL}/getAllEvents`)
       console.log(res);
       return res;
          // res.data.forEach((x) => {
@@ -79,11 +79,18 @@ export const getEventsAPI = async () => {
 
          // // console.log(pastEvents);
          // // console.log(upcommingEvents);
-    }catch(err){
+    }
+    catch(err){
       console.log("An error occured");
          console.log(err);
     }
-      
+}
 
-   
+export const getUserEventsAPI = async() => {
+   try{
+
+   }
+   catch(error){
+      console.log(error.message);
+   }
 }
