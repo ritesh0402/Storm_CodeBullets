@@ -77,33 +77,33 @@ const userLogIn = async (req, res) => {
 
 
 async function userEventRegistration(req, res) {
+  const userId = req.user.id;
   const { eventId } = req.body;
-
-}
-
-module.exports = { userLogIn, create_user };
-const userId = req.user.id;
-
-await prisma.user.update({
-  where: {
-    id: userId
-  },
-  data: {
-    attending_events: {
-      connect: {
-        id: eventId
+  await prisma.user.update({
+    where: {
+      id: userId
+    },
+    data: {
+      attending_events: {
+        connect: {
+          id: eventId
+        }
       }
     }
-  }
-})
-  .then(async () => {
-    res.status(200).send("User Subscribed Successfully!");
-    await prisma.$disconnect();
   })
-  .catch(async (e) => {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+    .then(async () => {
+      res.status(200).send("User Subscribed Successfully!");
+      await prisma.$disconnect();
+    })
+    .catch(async (e) => {
+      console.error(e);
+      await prisma.$disconnect();
+      process.exit(1);
+    });
+  
+}
+
+
+
 
 module.exports = { userLogIn, create_user, userEventRegistration };

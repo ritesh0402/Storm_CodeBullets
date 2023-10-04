@@ -15,7 +15,9 @@ export const authenticateSignup = async (data) => {
 
 export const authenticateLogin = async (data) => {
    try {
-      return await axios.post(`${URL}/login`, data);
+      return await axios.post(`${URL}/login`, data, {
+         withCredentials: true
+      });
    }
    catch (error) {
       console.log("error while authenticating login : ", error);
@@ -96,7 +98,9 @@ export const getUserEventsAPI = async() => {
 }
 
 export const registerForEvent = async (evtId) => {
-   await axios.post("https://127.0.0.1:5000/userEventRegisteration", { "eventId": evtId })
+   await axios.post("https://127.0.0.1:5000/userEventRegistration", { "eventId": evtId }, {
+      withCredentials: true
+   })
       .then((res) => {
          console.log(res)
       }).catch((err) => {
