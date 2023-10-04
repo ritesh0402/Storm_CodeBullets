@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const https = require('https');
 const fs = require('fs');
-
+const Routes = require('./routes/route');
 const app = express();
 const port = 5000;
 
@@ -28,9 +28,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(cookieParser());
 
-app.get("/", (req, res) => {
-    res.send("/");
-});
+app.use('/', Routes);
 
 const httpsServer = https.createServer(httpsOptions, app);
 

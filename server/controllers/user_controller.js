@@ -17,10 +17,11 @@ export async function create_user(req, res) {
         email: email,
         username: username,
         phone: phone,
-        hashed_password: hashed_password,
+        password: hashed_password,
       },
     })
     .then(async () => {
+        res.send("User creater successfully");
       await prisma.$disconnect();
     })
     .catch(async (e) => {
@@ -59,8 +60,7 @@ export const userLogIn = async (req, res) => {
 
     const authtoken = jwt.sign(data, JWT_SECRET);
 
-    return res
-      .cookie("access_token", authtoken, {
+    return res.cookie("access_token", authtoken, {
         secure: true,
         httpOnly: true,
         sameSite: "none",
