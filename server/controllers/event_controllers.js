@@ -32,5 +32,14 @@ async function getAllEvents(req, res) {
   res.status(200).send(events);
 }
 
+async function getEventsByUser(req, res){
+  const { id } = req.user.id;
+  const events = await prisma.user.findMany({
+    where:{ id:id},
+    select:{events:true}
+  });
+  res.status(200).send(events);
+}
 
-module.exports = { createEvent,getAllEvents };
+
+module.exports = { createEvent,getAllEvents,getEventsByUser };
