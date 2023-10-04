@@ -1,7 +1,8 @@
 const { PrismaClient } = require("@prisma/client");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
+JWT_SECRET = process.env.JWT_SECRET;
+require('dotenv').config();
 const cookieParser = require("cookie-parser");
 
 const SALT_ROUNDS = 10;
@@ -69,7 +70,7 @@ const userLogIn = async (req, res) => {
       .status(200)
       .send("Login Successful");
   } catch (error) {
-    res.status(500).json("Error: ", error.message);
+    res.status(500).send({"Error" : error.message});
   }
 };
 
