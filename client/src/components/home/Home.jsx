@@ -1,0 +1,11 @@
+import PastEvents from "./PastEvents";
+import UpcommingEvents from "./UpcommingEvents";
+import React from 'react'
+
+function Home() {
+   return (
+      <div>Home</div>
+   )
+}
+
+export default Home
