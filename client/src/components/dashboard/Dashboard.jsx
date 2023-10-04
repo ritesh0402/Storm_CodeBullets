@@ -1,4 +1,5 @@
 import DisplayEvents from "../events/DisplayEvents"
+import { getUserEventsAPI } from "../../service/api"
 import Stats from "./Stats";
 import axios from 'axios';
 import React from 'react'

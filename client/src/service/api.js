@@ -67,9 +67,9 @@ export const removeFromCart = async (productId, auth_token) => {
 export const getEventsAPI = async () => {
    // let pastEvents = [];
    // let upcommingEvents = [];
-    try{
+   try {
       const res = await axios.get(`${URL}/getAllEvents`)
-      console.log(res);
+      // console.log(res);
       return res;
       // res.data.forEach((x) => {
       //    if (x.time < Date.now()) {
@@ -79,21 +79,34 @@ export const getEventsAPI = async () => {
       //    }
       // });
 
-         // // console.log(pastEvents);
-         // // console.log(upcommingEvents);
-    }
-    catch(err){
+      // // console.log(pastEvents);
+      // // console.log(upcommingEvents);
+   }
+   catch (err) {
       console.log("An error occured");
-         console.log(err);
-    }
+      console.log(err);
+   }
 }
 
-export const getUserEventsAPI = async() => {
-   try{
+export const getUserEventsAPI = async () => {
+   try {
+      const res = await axios.get(`${URL}/getEventsByUser`)
+      // console.log(res);
+      return res;
+      // res.data.forEach((x) => {
+      //    if (x.time < Date.now()) {
+      //       pastEvents.push(x);
+      //    } else {
+      //       upcommingEvents.push(x);
+      //    }
+      // });
 
+      // // console.log(pastEvents);
+      // // console.log(upcommingEvents);
    }
-   catch(error){
-      console.log(error.message);
+   catch (err) {
+      console.log("An error occured");
+      console.log(err);
    }
 }
 
