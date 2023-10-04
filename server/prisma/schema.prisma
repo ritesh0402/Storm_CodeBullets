@@ -16,4 +16,15 @@ model User {
   password String
   email String
   phone String
+  events Event[]
+}
+
+model Event {
+  id String @id @map("_id") @default(auto()) @db.ObjectId
+  title String
+  desc String
+  venue String
+  time DateTime @db.Timestamp
+  organizer User @relation(fields: [organizer_id], references: [id])
+  organizer_id String @db.ObjectId
 }

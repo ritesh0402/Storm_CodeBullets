@@ -1,7 +1,7 @@
-import jwt from 'jsonwebtoken'
+const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 
-export const fetchuser = (req, res, next) => {
+const fetchuser = (req, res, next) => {
     const token = req.header('auth_token');
     if (!token) {
         res.status(401).send({ error: "Please authenticate using a valid token" })
@@ -11,8 +11,9 @@ export const fetchuser = (req, res, next) => {
         req.user = data.user;
         next();
     } catch (error) {
-        res.clearCookie("auth_token");
         res.status(401).send({ error: "Please authenticate using a valid token" })
     }
 
 }
+
+module.exports = {fetchuser}
