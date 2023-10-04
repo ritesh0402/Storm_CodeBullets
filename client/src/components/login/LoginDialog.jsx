@@ -117,42 +117,42 @@ function LoginDialog({ open, setOpen }) {
       setLogin({ ...login, [e.target.name]: e.target.value })
    }
 
-   //    const loginUser = async () => {
-   //       let response = await authenticateLogin(login);
-   //       console.log(response)
-   //       const username = login.username;
-   //       const auth_token = response.data.authtoken
-   //       if (response.status === 200) {
-   //          const userData = {
-   //             username,
-   //             auth_token
-   //          };
-   //          Cookies.set('auth_token', JSON.stringify(userData), { expires: 1 });
-   //          setAccount(username);
-   //          setToken(auth_token)
-   //          handleClose();
-   //       }
-   //       else {
-   //          setError(true);
-   //       }
-   //    }
-
-   //    const signupUser = async () => {
-   //       let response = await authenticateSignup(signup);
-   //       if (!response) return;
-   //       const username = login.username;
-   //       const auth_token = response.data.authtoken
+   // const loginUser = async () => {
+   //    let response = await authenticateLogin(login);
+   //    console.log(response)
+   //    const username = login.username;
+   //    const auth_token = response.data.authtoken
+   //    if (response.status === 200) {
    //       const userData = {
    //          username,
    //          auth_token
    //       };
-   //       // const expirationTime = new Date(new Date().getTime() + 60000);
    //       Cookies.set('auth_token', JSON.stringify(userData), { expires: 1 });
-   //       setAccount(username)
+   //       setAccount(username);
    //       setToken(auth_token)
    //       handleClose();
-
    //    }
+   //    else {
+   //       setError(true);
+   //    }
+   // }
+
+   // const signupUser = async () => {
+   //    let response = await authenticateSignup(signup);
+   //    if (!response) return;
+   //    const username = login.username;
+   //    const auth_token = response.data.authtoken
+   //    const userData = {
+   //       username,
+   //       auth_token
+   //    };
+   //    // const expirationTime = new Date(new Date().getTime() + 60000);
+   //    Cookies.set('auth_token', JSON.stringify(userData), { expires: 1 });
+   //    setAccount(username)
+   //    setToken(auth_token)
+   //    handleClose();
+
+   // }
 
    return (
       <div>
