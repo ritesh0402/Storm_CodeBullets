@@ -69,13 +69,13 @@ export const getEventsAPI = async () => {
       const res = await axios.get(`${URL}/getAllEvents`)
       console.log(res);
       return res;
-         // res.data.forEach((x) => {
-         //    if (x.time < Date.now()) {
-         //       pastEvents.push(x);
-         //    } else {
-         //       upcommingEvents.push(x);
-         //    }
-         // });
+      // res.data.forEach((x) => {
+      //    if (x.time < Date.now()) {
+      //       pastEvents.push(x);
+      //    } else {
+      //       upcommingEvents.push(x);
+      //    }
+      // });
 
          // // console.log(pastEvents);
          // // console.log(upcommingEvents);
@@ -93,4 +93,14 @@ export const getUserEventsAPI = async() => {
    catch(error){
       console.log(error.message);
    }
+}
+
+export const registerForEvent = async (evtId) => {
+   await axios.post("https://127.0.0.1:5000/userEventRegisteration", { "eventId": evtId })
+      .then((res) => {
+         console.log(res)
+      }).catch((err) => {
+         console.log("An error Occured")
+         console.log(err)
+      })
 }
