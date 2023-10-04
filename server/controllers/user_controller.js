@@ -4,13 +4,15 @@ const SALT_ROUNDS = 10;
 
 const prisma = new PrismaClient();
 
-async function create_user(email, password) {
-
+async function create_user(req, res) {
+    const {email, username, phone, password} = req.body;
     const hashed_password = await bcrypt.hash(password, SALT_ROUNDS);
 
     await prisma.user.create({
         data: {
             email: email,
+            username: username,
+            phone: phone,
             hashed_password: hashed_password
         }
     })
@@ -23,3 +25,4 @@ async function create_user(email, password) {
         process.exit(1);
     });
 }
+
