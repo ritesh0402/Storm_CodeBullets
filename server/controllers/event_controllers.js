@@ -12,7 +12,9 @@ async function createEvent(req, res) {
         title: title,
         desc: desc,
         venue: venue,
-        time: parseInt(time),
+        startTime: parseInt(startTime),
+        endTime: parseInt(endTime),
+        imageUrl: imageUrl,
         organizer_id: organizer_id,
       },
     })
@@ -33,13 +35,15 @@ async function getAllEvents(req, res) {
 }
 
 async function getEventsByUser(req, res) {
-  const { id } = req.user.id;
-  const events = await prisma.user.findMany({
-    where: { id: id },
-    include: {
+  const id = req.user.id;
+  const events = await prisma.user.findFirst({
+    where: {
+      id: id
+    },
+    select: {
       events: true
     }
-  });
+  })
   res.status(200).send(events);
 }
 
