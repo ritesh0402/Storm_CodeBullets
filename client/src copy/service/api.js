@@ -68,7 +68,7 @@ export const getEvents = async () => {
    // "https://127.0.0.1:5000/getAllEvents"
    await axios.get("https://127.0.0.1:5000/getAllEvents")
       .then((res) => {
-         
+         console.log("rhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaes")
          console.log(res)
          res.data.forEach((x) => {
             if (x.time < Date.now()) {

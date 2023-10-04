@@ -35,9 +35,8 @@ async function getAllEvents(req, res) {
 }
 
 async function getEventsByUser(req, res) {
-  const  id  = req.user.id;
-  console.log(id);
-  const events = await prisma.user.findMany({
+  const id = req.user.id;
+  const events = await prisma.user.findFirst({
     where: {
       id: id
     },
