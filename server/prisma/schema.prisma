@@ -20,8 +20,8 @@ model User {
 
   events Event[] @relation(name: "organizer_events")
 
-  attended_events    Event[]  @relation(fields: [attended_event_ids], references: [id], name: "attendees_events")
-  attended_event_ids String[] @db.ObjectId
+  attending_events    Event[]  @relation(fields: [attending_event_ids], references: [id], name: "attendees_events")
+  attending_event_ids String[] @db.ObjectId
 }
 
 model Event {
