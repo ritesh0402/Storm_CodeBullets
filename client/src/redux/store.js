@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import { getEventsReducer, getEventDetailsReducer } from './reducers/eventReduces';
 
 const reducer = combineReducers({
-   getProducts: getEventsReducer,
+   getEvents: getEventsReducer,
    getEventDetails: getEventDetailsReducer
 });
 

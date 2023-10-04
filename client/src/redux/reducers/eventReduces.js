@@ -3,8 +3,8 @@ import * as actionType from '../constants'
 
 export const getEventsReducer = (state = { events: [] }, action) => {
    switch (action.type) {
-      case actionType.GET_EVENTS_SUCCES:
-         return { products: action.payload }
+      case actionType.GET_EVENTS_SUCCESS:
+         return { events: action.payload }
       case actionType.GET_EVENTS_FAIL:
          return { error: action.payload }
       default:

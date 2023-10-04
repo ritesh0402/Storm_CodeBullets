@@ -1,16 +1,19 @@
 import DisplayEvents from "../events/DisplayEvents";
-import React from 'react'
-import { getEvents } from '../../service/api';
+import React, {useEffect} from 'react';
 import asyncWrapper from "../../utils"
+import {useSelector, useDispatch} from 'react-redux'
+import { getEvents } from "../../redux/actions/eventActions";
 
 function Home() {
-   const data = getEvents();
-   console.log(data)
+   const dispatch = useDispatch();
+   const {events} = useSelector(state => state.getEvents)
+   useEffect(()=>{
+      dispatch(getEvents())
+   }, [dispatch])
    return (
-      data &&
       <div>
-         <DisplayEvents events={data[0]} title={"Past Events"}></DisplayEvents>
-         <DisplayEvents events={data[1]} title={"Upcomming Events"}></DisplayEvents>
+         <DisplayEvents events={events} title={"Past Events"}></DisplayEvents>
+         <DisplayEvents events={events} title={"Upcomming Events"}></DisplayEvents>
       </div>
 
    )

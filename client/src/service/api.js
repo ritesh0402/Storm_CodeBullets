@@ -62,30 +62,28 @@ export const removeFromCart = async (productId, auth_token) => {
       console.log("error while removing products : ", error.message);
    }
 }
-export const getEvents = async () => {
-   let events = [[], []];
+export const getEventsAPI = async () => {
+   // let pastEvents = [];
+   // let upcommingEvents = [];
+    try{
+      const res = await axios.get("https://127.0.0.1:5000/getAllEvents")
+      console.log(res);
+      return res;
+         // res.data.forEach((x) => {
+         //    if (x.time < Date.now()) {
+         //       pastEvents.push(x);
+         //    } else {
+         //       upcommingEvents.push(x);
+         //    }
+         // });
 
-   // "https://127.0.0.1:5000/getAllEvents"
-   await axios.get("https://127.0.0.1:5000/getAllEvents")
-      .then((res) => {
-         
-         console.log(res)
-         res.data.forEach((x) => {
-            if (x.time < Date.now()) {
-               events[0].push(x);
-            } else {
-               events[1].push(x);
-            }
-         });
-
-         // console.log(pastEvents);
-         // console.log(upcommingEvents);
-
-      })
-      .catch((err) => {
-         console.log("An error occured");
+         // // console.log(pastEvents);
+         // // console.log(upcommingEvents);
+    }catch(err){
+      console.log("An error occured");
          console.log(err);
-      });
+    }
+      
 
-   return events
+   
 }

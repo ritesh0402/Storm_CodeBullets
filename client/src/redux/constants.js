@@ -1,6 +1,6 @@
 
 // events constants
-export const GET_EVENTS_SUCCES = 'getEventsSuccess';
+export const GET_EVENTS_SUCCESS = 'getEventsSuccess';
 export const GET_EVENTS_FAIL = 'getEventsFail';
 
 //events details constants
