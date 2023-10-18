@@ -2,6 +2,7 @@ import Header from './components/header/Header';
 import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
 import Home from './components/home/Home';
+import CreateEvent from './components/events/CreateEvent';
 import About from './components/About';
 import Dashboard from './components/dashboard/Dashboard';
 import DataProvider from './context/DataProvider';
@@ -13,6 +14,7 @@ function App() {
     <DataProvider>
       <div className="App">
         <Header></Header>
+        <CreateEvent></CreateEvent>
         <Router>
           <Routes>
             <Route path="home" element={<Home />} />
